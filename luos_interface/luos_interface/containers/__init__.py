@@ -28,11 +28,11 @@ _make = {
     'Stepper': LuosStepperMotorPublisher,
 }
 
-def make_module_interface_factory(node, module, rate):
-    if module.type in _make:
-        return _make[module.type](node, module, rate)
-    elif module.type == 'Void':
-        node.get_logger().warn("A DynamixelMotor module has been found but no motor has been connected. Please connect a motor first.")
-    elif module.type != 'Gate':
+def make_container_interface_factory(node, container, rate):
+    if container.type in _make:
+        return _make[container.type](node, container, rate)
+    elif container.type == 'Void':
+        node.get_logger().warn("A DynamixelMotor container has been found but no motor has been connected. Please connect a motor first.")
+    elif container.type != 'Gate':
         # Gate has no publisher or subscriber
-        node.get_logger().warn("Luos module type '{}' is unknown to luos_interface and will be ignored".format(module.type))
+        node.get_logger().warn("Luos container type '{}' is unknown to luos_interface and will be ignored".format(container.type))

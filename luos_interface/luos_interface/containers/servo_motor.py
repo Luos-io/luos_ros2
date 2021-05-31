@@ -5,7 +5,7 @@ from .deserializers import deserializeFloat32, deserializeFloat32RadToDeg
 from .generic import LuosGenericPublisher
 
 class LuosServoMotorPublisher(LuosGenericPublisher):
-    def __init__(self, node, module, rate):
+    def __init__(self, node, container, rate):
         variables = {
             "rot_position": {"read_type": Float32, "write_type": Float32,
                       "serialize": serializeFloat32DegToRad, "deserialize": deserializeFloat32RadToDeg,
@@ -22,4 +22,4 @@ class LuosServoMotorPublisher(LuosGenericPublisher):
         }
         events = {}
         aggregates = {}
-        super(LuosServoMotorPublisher, self).__init__(node, module, rate, variables, events, aggregates)
+        super(LuosServoMotorPublisher, self).__init__(node, container, rate, variables, events, aggregates)

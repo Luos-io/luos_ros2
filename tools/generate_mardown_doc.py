@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-from luos_interface.modules import _make as modules
-from luos_interface.modules import *
+from luos_interface.containers import _make as containers
+from luos_interface.containers import *
 
-for name, Class in modules.items():
+for name, Class in containers.items():
     # Call the publisher's constructor with node = None to print the doc
 
-    print("# Module", name)
+    print("# Container", name)
     print("## ROS topics")
     print("| **Topic name** | **Message type** |")
     print("|:----|:---:|")

@@ -1,8 +1,8 @@
 """
-Deserialization from ROS standard or custom message types and units to Luos modules
+Deserialization from ROS standard or custom message types and units to Luos containers
 There are:
-  * module_agnostic deserializers
-  * module-dependent deserialiers
+  * container_agnostic deserializers
+  * container-dependent deserialiers
 """
 
 RAD_TO_DEG = 57.29577951308232

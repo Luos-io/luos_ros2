@@ -4,10 +4,10 @@ from .serializers import serializeFloat32, serializeFloatChange
 from .deserializers import deserializeFloat32
 from .generic import LuosGenericPublisher
 
-class LuosLightPublisher(LuosGenericPublisher):
-    def __init__(self, node, module, rate):
+class LuosDistancePublisher(LuosGenericPublisher):
+    def __init__(self, node, container, rate):
         variables = {
-            "lux": {
+            "distance": {
                 "read_type": Float32,
                 "serialize": serializeFloat32
                 },
@@ -21,4 +21,4 @@ class LuosLightPublisher(LuosGenericPublisher):
             "filter_changed": {"type": FloatChange, "serialize": serializeFloatChange},
         }
         aggregates = {}
-        super(LuosLightPublisher, self).__init__(node, module, rate, variables, events, aggregates)
+        super(LuosDistancePublisher, self).__init__(node, container, rate, variables, events, aggregates)

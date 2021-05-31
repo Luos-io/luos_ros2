@@ -3,7 +3,7 @@
 <package format="3">
   <name>luos_msgs</name>
   <version>0.2.0</version>
-  <description>Format of messages exchanged over ROS for Luos modules</description>
+  <description>Format of messages exchanged over ROS for Luos containers</description>
   <maintainer email="yoan@aubrune.eu">Yoan Mollard</maintainer>
   <license>MIT</license>
 

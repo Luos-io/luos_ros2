@@ -4,7 +4,7 @@ from .deserializers import deserializeColor, deserializeFloat32
 from .generic import LuosGenericPublisher
 
 class LuosColorPublisher(LuosGenericPublisher):
-    def __init__(self, node, module, rate):
+    def __init__(self, node, container, rate):
         variables = {
             "color": {"read_type": ColorRGBA, "write_type": ColorRGBA,
                       "serialize": serializeColor, "deserialize": deserializeColor,
@@ -15,4 +15,4 @@ class LuosColorPublisher(LuosGenericPublisher):
         }
         events = {}
         aggregates = {}
-        super(LuosColorPublisher, self).__init__(node, module, rate, variables, events, aggregates)
+        super(LuosColorPublisher, self).__init__(node, container, rate, variables, events, aggregates)

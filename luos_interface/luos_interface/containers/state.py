@@ -5,7 +5,7 @@ from .deserializers import deserializeBool
 from .generic import LuosGenericPublisher
 
 class LuosStatePublisher(LuosGenericPublisher):
-    def __init__(self, node, module, rate):
+    def __init__(self, node, container, rate):
         variables = {
             "state": {
                 "read_type": Bool, "write_type": Bool,
@@ -18,4 +18,4 @@ class LuosStatePublisher(LuosGenericPublisher):
             "changed": {"type": BoolChange, "serialize": serializeBoolChange}
         }
         aggregates = {}
-        super(LuosStatePublisher, self).__init__(node, module, rate, variables, events, aggregates)
+        super(LuosStatePublisher, self).__init__(node, container, rate, variables, events, aggregates)

@@ -6,7 +6,7 @@ from .generic import LuosGenericPublisher
 
 
 class LuosControlledMotorPublisher(LuosGenericPublisher):
-    def __init__(self, node, module, rate):
+    def __init__(self, node, container, rate):
         variables = {
             "positionPid": {
                 "read_type": Vector3, "write_type": Vector3,
@@ -74,4 +74,4 @@ class LuosControlledMotorPublisher(LuosGenericPublisher):
         }
         events = {}
         aggregates = {}
-        super(LuosControlledMotorPublisher, self).__init__(node, module, rate, variables, events, aggregates)
+        super(LuosControlledMotorPublisher, self).__init__(node, container, rate, variables, events, aggregates)

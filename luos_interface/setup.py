@@ -14,7 +14,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         (join('share', package_name), glob('launch/*.launch.py')),
     ],
-    install_requires=['setuptools', 'pyserial', 'pyluos==1.2.3'],
+    install_requires=['setuptools', 'pyserial', 'pyluos'],
     zip_safe=True,
     maintainer='Yoan Mollard',
     maintainer_email='yoan@aubrune.eu',
@@ -25,8 +25,5 @@ setup(
         'console_scripts': [
             'broker = luos_interface.broker:main'
         ],
-    },
-    dependency_links = [
-       'http://github.com/Luos-Robotics/pyluos/tarball/master#egg=pyluos-1.2.1'
-   ]
+    }
 )

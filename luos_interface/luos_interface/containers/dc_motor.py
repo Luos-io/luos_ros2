@@ -4,7 +4,7 @@ from .deserializers import deserializeFloat32
 from .generic import LuosGenericPublisher
 
 class LuosDcMotorPublisher(LuosGenericPublisher):
-    def __init__(self, node, module, rate):
+    def __init__(self, node, container, rate):
         variables = {
             "power_ratio": {
                       "read_type": Float32, "write_type": Float32,
@@ -13,4 +13,4 @@ class LuosDcMotorPublisher(LuosGenericPublisher):
         }
         events = {}
         aggregates = {}
-        super(LuosDcMotorPublisher, self).__init__(node, module, rate, variables, events, aggregates)
+        super(LuosDcMotorPublisher, self).__init__(node, container, rate, variables, events, aggregates)

@@ -5,16 +5,15 @@ from os.path import isdir, join
 from pyluos import Device
 from serial import SerialException
 from rcl_interfaces.srv import GetParameters
-from .modules import make_module_interface_factory
+from .containers import make_container_interface_factory
 from .utils.serial import get_available_ports
-
 
 class LuosBroker(Node):
     DEFAULT_RATE_HZ = 30
     def __init__(self):
         super(LuosBroker, self).__init__("luos_broker")
         self._device = None
-        self._module_interfaces = {}
+        self._container_interfaces = {}
         self._log = self.get_logger()
         self.declare_parameter("device")
         self.declare_parameter("rate")
@@ -24,8 +23,8 @@ class LuosBroker(Node):
         self.connected = self.connect(device)
 
     @property
-    def num_modules(self):
-        return len(self._device.modules) if self._device is not None else 0
+    def num_containers(self):
+        return len(self._device.containers) if self._device is not None else 0
 
     def connect(self, device=""):
         # Connect either to a specified device or autoconnect if no device is specified
@@ -50,9 +49,9 @@ class LuosBroker(Node):
             self._log.error(repr(e))
             return False
         else:
-            self._log.info("Broker found {} modules:\r\n{}".format(self.num_modules, self._device.modules))
-            for module in self._device.modules:
-                self._module_interfaces[module.alias] = make_module_interface_factory(self, module, self._rate)
+            self._log.info("Broker found {} containers:\r\n{}".format(self.num_containers, self._device.containers))
+            for container in self._device.containers:
+                self._container_interfaces[container.alias] = make_container_interface_factory(self, container, self._rate)
             return True
 
     def autoconnect(self):
@@ -72,7 +71,7 @@ def main():
     rclpy.init()
     broker = LuosBroker()
     if not broker.connected: return
-    broker._log.info("Broker is connected to {} Luos modules at {}Hz!".format(broker.num_modules, broker._rate))
+    broker._log.info("Broker is connected to {} Luos containers at {}Hz!".format(broker.num_containers, broker._rate))
     try:
         rclpy.spin(broker)
     except KeyboardInterrupt:
